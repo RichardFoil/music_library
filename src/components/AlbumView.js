@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function AlbumView() {
     const { id } = useParams()
     const [ albumData, setAlbumData ] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const API_URL = `http://localhost:4000/song/${id}`
@@ -15,19 +16,29 @@ function AlbumView() {
         fetchData()
     }, [id])
 
-    const justSongs = albumData.filter(entry => entry.wrapperType === 'track')
+    const navButtons = () => {
+        return (
+            <div>
+                <button onClick={() => {navigate.push('/')}}>Home</button> |
+                <button onClick={() => {navigate.goBack()}}>Back</button>
+            </div>
+        )
+    }
 
-    const renderSongs = justSongs.map((song, i) => {
+        const allSongs = albumData.filter(entity => entity.kind === 'song')
+    .map((album, i) => {
         return (
             <div key={i}>
-                <p>{song.trackName}</p>
+                <p>{album.trackName}</p>
             </div>
         )
     })
 
     return (
         <div>
-            {renderSongs}
+            {albumData.length > 0 ? <h2>{albumData[0].collectionName}</h2> : <p>loading...</p>}
+            {navButtons()}
+            {allSongs}
         </div>
     )
 }

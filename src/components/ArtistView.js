@@ -26,11 +26,21 @@ const ArtistView = () => {
                                 </div>)
                                 })
     
-
+    
+    const navButtons = () => {
+        return (
+            <div>
+                <button onClick={() => {navigate.push('/')}}>Home</button> |
+                <button onClick={() => {navigate.goBack()}}>Back</button>
+            </div>
+        )
+    }
+    
+    
     return (
         <div>
             {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <p>loading...</p>}
-
+            {navButtons()}
             {allAlbums}
         </div>
     )
