@@ -4,7 +4,7 @@ import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import { DataContext } from './context/DataContext'
 import { SearchContext } from './context/SearchContext'
-import AlbumView from './AlbumView'
+import AlbumView from './components/AlbumView'
 import ArtistView from './components/ArtistView'
 import './App.css'
 
