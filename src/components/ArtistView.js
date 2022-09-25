@@ -30,8 +30,8 @@ const ArtistView = () => {
     const navButtons = () => {
         return (
             <div>
-                <button onClick={() => {navigate.push('/')}}>Home</button> |
-                <button onClick={() => {navigate.goBack()}}>Back</button>
+                <button onClick={() => {navigate('/')}}>Home</button> |
+                <button onClick={() => {navigate()}}>Back</button>
             </div>
         )
     }
